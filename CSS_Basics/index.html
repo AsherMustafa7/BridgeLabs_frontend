@@ -2,65 +2,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>DOM Manipulation</title>
-
-    <style>
-        .active {
-            color: green;
-            font-size: 30px;
-        }
-        #container {
-            border: 1px solid black;
-            padding: 10px;
-            margin-top: 20px;
-        }
-    </style>
-</head> 
-
+    <title>DOM Events</title>
+</head>
 <body>
 
-    <h1 id="heading">Hello World</h1>
+    <h1>DOM Events</h1>
 
-    
+    <button id="btn">Click Me</button>
 
-    <button onclick="changeContent()">Change Content</button>
-    <button onclick="changeStyle()">Change Style</button>
-    <button onclick="toggleClass()">Toggle Class</button>
-    <div id ="container">
-        <h1>This is the Div of the container</h1>
+    <br><br>
 
-    </div>
-    <button onclick="showMessage()">Click Me</button>
+    <input id="nameInput" placeholder="Enter your name">
 
-    
+    <p id="output"></p>
+
+    <ul id="list">
+        <li>Java</li>
+        <li>JavaScript</li>
+        <li>Python</li>
+    </ul>
+
     <script>
-        let heading = document.getElementById("heading");
+        // Click event
+        document.getElementById("btn")
+            .addEventListener("click", function() {
+                alert("Button clicked!");
+            });
 
-        function changeContent() {
-            heading.textContent = "Welcome Asher!";
-        }
+        // Input event
+        document.getElementById("nameInput")
+            .addEventListener("input", function(event) {
+                document.getElementById("output").textContent =
+                    event.target.value;
+            });
 
-        function changeStyle() {
-            heading.style.backgroundColor = "yellow";
-        }
-
-        function toggleClass() {
-            heading.classList.toggle("active");
-        }
-        function showMessage() {
-        alert("Hello Asher!");
-    }
-        let heading1 = document.createElement("h1");
-
-        heading1.textContent = "Hello Asher!";
-
-        let container = document.getElementById("container");
-        let paragraph = document.createElement("p");
-        paragraph.textContent = "Learning JavaScript DOM";
-        paragraph.style.color = "blue"; 
-        container.appendChild(paragraph);
-        container.append("Some text");
-
+        // Event delegation
+        document.getElementById("list")
+            .addEventListener("click", function(event) {
+                if (event.target.matches("li")) {
+                    console.log(event.target.textContent);
+                }
+            });
+        document.getElementById("list")
+            .addEventListener("mouseover", function(event) {
+                if (event.target.matches("li")) {
+                    // make its size a little bigger with a smooth transition
+                    event.target.style.transition = "transform 0.3s";
+                    event.target.style.transform = "scale(1.2)";
+                }
+            });
+        document.getElementById("list")
+            .addEventListener("mouseout", function(event) {
+                if (event.target.matches("li")) {
+                    // reset its size
+                    event.target.style.transition = "transform 0.3s";
+                    event.target.style.transform = "scale(1)";
+                }
+            });
     </script>
 
 </body>
