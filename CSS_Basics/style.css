@@ -1,0 +1,24 @@
+buttom:hover{
+    background-color: blue;
+}
+button:active{
+    background-color: red;
+}
+input:focus{
+    /* we need to make the border as green */
+    border: 2px solid green;
+}
+li:first-child{
+    /* need to make it bold */
+    font-weight: bold;
+}
+li:nth-child(2n){
+    background-color: grey;
+}
+li:nth-child(3){
+    color: red;
+}
+input::placeholder {
+    color: rgb(226, 32, 178);
+    font-style: italic;
+}
