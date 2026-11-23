@@ -3,63 +3,45 @@
 <html>
 <head>
     <title>DOM Events</title>
+    <style>
+        body {
+            background-color: rgb(148, 189, 151);
+            color: rgb(1, 48, 1);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        #myForm {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            height: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10%;
+            background-color: #f9f9f9;
+        }
+
+
+
+    </style>
 </head>
 <body>
 
-    <h1>DOM Events</h1>
+    <form id="myForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
 
-    <button id="btn">Click Me</button>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message"></textarea>
 
-    <br><br>
+        <label for="course">Course:</label>
+        <select id="course" name="course">
+            <option value="java">Java</option>
+            <option value="python">Python</option>
+        </select>
 
-    <input id="nameInput" placeholder="Enter your name">
-
-    <p id="output"></p>
-
-    <ul id="list">
-        <li>Java</li>
-        <li>JavaScript</li>
-        <li>Python</li>
-    </ul>
-
-    <script>
-        // Click event
-        document.getElementById("btn")
-            .addEventListener("click", function() {
-                alert("Button clicked!");
-            });
-
-        // Input event
-        document.getElementById("nameInput")
-            .addEventListener("input", function(event) {
-                document.getElementById("output").textContent =
-                    event.target.value;
-            });
-
-        // Event delegation
-        document.getElementById("list")
-            .addEventListener("click", function(event) {
-                if (event.target.matches("li")) {
-                    console.log(event.target.textContent);
-                }
-            });
-        document.getElementById("list")
-            .addEventListener("mouseover", function(event) {
-                if (event.target.matches("li")) {
-                    // make its size a little bigger with a smooth transition
-                    event.target.style.transition = "transform 0.3s";
-                    event.target.style.transform = "scale(1.2)";
-                }
-            });
-        document.getElementById("list")
-            .addEventListener("mouseout", function(event) {
-                if (event.target.matches("li")) {
-                    // reset its size
-                    event.target.style.transition = "transform 0.3s";
-                    event.target.style.transform = "scale(1)";
-                }
-            });
-    </script>
-
+        <button type="submit">Submit</button>
+</form>
 </body>
 </html>
